@@ -1,13 +1,13 @@
-// index.js
 const { fetchBreedDescription } = require('./breedFetcher');
+const searchCats = 'https://api.thecatapi.com/v1/breeds/search?q=';
+const argv = process.argv.slice(2);
+const userCat = searchCats + argv;
 
-const breedName = process.argv[2];
-
-fetchBreedDescription(breedName, (error, desc) => {
+fetchBreedDescription(userCat, (error, desc) => {
   if (error) {
-    return console.log('Error:', error);
+    console.log('Error fetch details:', error);
   } else {
-    return console.log(desc);
+    console.log(desc);
   }
 });
 
